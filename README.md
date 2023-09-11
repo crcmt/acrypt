@@ -6,7 +6,7 @@
 *acrypt* is a tool to encrypt a password
 using an asymmetric key encryption scheme.
 
-It aims to solve the following scenario:
+It aims to solve the following scenario:  
 Admin A created an account for User U.
 Now A wants to send the account's password to U by email.
 
