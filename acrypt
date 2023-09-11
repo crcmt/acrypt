@@ -1,0 +1,142 @@
+#!/bin/bash -eu
+#
+# note
+#  acrypt stands for Asymetric enCRYPTion
+
+# -- func
+
+usage ()
+{
+    echo "Usage:"
+    echo " $0 gen"
+    echo " $0 enc <plaintext_filename>"
+    echo " $0 dec <encrypted_filename>"
+}
+
+get_pass ()
+{
+    read -s -p "Password: " password
+    echo $password
+}
+
+check_priv_key ()
+{
+    if [[ ! -e "private.key" ]]; then
+        echo 'Missing "private.key" file'
+        exit 0
+    fi
+}
+
+check_pub_key ()
+{
+    if [[ ! -e "public.key" ]]; then
+        echo 'Missing "public.key" file'
+        exit 0
+    fi
+}
+
+# private key is encrypted with password
+gen_keys_1 ()
+{
+    echo "Generate new keys pair"
+
+    passwd_=$(get_pass)
+    echo
+
+    # generate private key
+    openssl genrsa -aes256 -passout pass:$passwd_ -out private.key 8912
+
+    # extract the public key.
+    openssl rsa -in private.key -passin pass:$passwd_ -pubout -out public.key
+}
+
+# private key is unencrypted without password
+gen_keys_2 ()
+{
+    echo "Generate new keys pair"
+    echo
+
+    # generate private key
+    openssl genrsa -out private.key 8912
+
+    # extract the public key.
+    openssl rsa -in private.key -pubout -out public.key
+}
+
+encrypt ()
+{
+    plaintext_filename=$1
+    openssl rsautl -encrypt -pubin -inkey public.key -in $plaintext_filename -out encrypted.txt
+}
+
+decrypt ()
+{
+    encrypted_filename=$1
+    openssl rsautl -decrypt -inkey private.key -in $encrypted_filename -out plaintext.txt
+}
+
+
+# -- init
+
+priv_encryption=true
+
+
+# -- parse args
+
+# parse the options:
+while getopts nh flag; do
+  case "$flag" in
+     n) priv_encryption=false # n stands for 'No priv key encryption'
+        ;;
+     h) usage
+        exit 0
+        ;;
+    \?) exit 42
+        ;;
+  esac
+done
+
+# keep only positional args
+shift $((OPTIND - 1))
+
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+else
+    action="$1"
+fi
+
+
+# -- main
+
+if [[ $action = "gen" ]]; then
+
+    if [[ $priv_encryption = "true" ]]; then
+        gen_keys_1
+    else
+        gen_keys_2
+    fi
+elif [[ $action = "enc" ]]; then
+
+    if [[ $# -ne 2 ]]; then
+        usage
+        exit 1
+    fi
+
+    plaintext_filename=$2
+    check_pub_key
+    encrypt $plaintext_filename
+elif [[ $action = "dec" ]]; then
+
+    if [[ $# -ne 2 ]]; then
+        usage
+        exit 1
+    fi
+
+    encrypted_filename=$2
+    check_priv_key
+    decrypt $encrypted_filename
+else
+    usage
+    exit 1
+fi
