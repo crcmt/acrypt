@@ -132,7 +132,7 @@ elif [[ $action = "encrypt" ]]; then
     plaintext_filename=$3
     check_pub_key $pubkey_filename
     encrypt $pubkey_filename $plaintext_filename
-    echo "Encrypted file successfully created ('encrypted.txt')"
+    echo "Encrypted file successfully created (encrypted.txt)"
 elif [[ $action = "decrypt" ]]; then
 
     if [[ $# -ne 3 ]]; then
@@ -144,7 +144,7 @@ elif [[ $action = "decrypt" ]]; then
     encrypted_filename=$3
     check_priv_key $privkey_filename
     decrypt $privkey_filename $encrypted_filename
-    echo "Plaintext file successfully created ('plaintext.txt')"
+    echo "Plaintext file successfully created (plaintext.txt)"
 else
     usage
     exit 1
