@@ -34,7 +34,7 @@ It aims to solve the following scenario:
 
   8. Alice now knows the password and can connect to her account.
 
-### Basic usage
+### Notes
 
   * *acrypt* stands for 'Asymetric enCRYPTion'.
   * Technically, *acrypt* is a wrapper around openssl.
