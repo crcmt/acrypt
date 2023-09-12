@@ -24,7 +24,7 @@ check_priv_key ()
     local privkey_filename=$1
 
     if [[ ! -e "$privkey_filename" ]]; then
-        echo 'Missing "private.key" file'
+        echo 'Missing "$privkey_filename" file'
         exit 1
     fi
 }
@@ -34,7 +34,7 @@ check_pub_key ()
     local pubkey_filename=$1
 
     if [[ ! -e "$pubkey_filename" ]]; then
-        echo 'Missing "public.key" file'
+        echo 'Missing "$pubkey_filename" file'
         exit 1
     fi
 }
