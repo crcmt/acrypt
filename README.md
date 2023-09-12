@@ -25,8 +25,8 @@ It aims to solve the following scenario:
 
         ./acrypt encrypt public.key plaintext.txt
 
-  5. Bob sends the encrypted passwd to Alice by email.
-  6. Alice decrypts the encrypted passwd with her private key.
+  5. Bob sends the encrypted password to Alice by email.
+  6. Alice decrypts the encrypted password with her private key.
 
         ./acrypt decrypt private.key encrypted.dat
 
