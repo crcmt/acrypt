@@ -4,7 +4,7 @@
 *acrypt* stands for 'Asymetric enCRYPTion'.
 
 *acrypt* is a tool to encrypt a password
-using an asymmetric key encryption scheme.
+using asymmetric key encryption scheme.
 
 It aims to solve the following scenario:  
   1. Admin Bob created an account for User Alice.
