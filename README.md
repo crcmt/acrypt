@@ -12,25 +12,35 @@ It aims to solve the following scenario:
 
   1. Bob and Alice install *acrypt*
 
+      ```
       git clone https://github.com/crcmt/acrypt
+      ```
 
   2. Alice generates keys pair
 
-        ./acrypt generate
+      ```
+      ./acrypt generate
+      ```
 
   3. Alice sends her public key to Bob by email.
   4. Bob encrypts the account's password with Alice's public key.
 
-        ./acrypt encrypt public.key plaintext.txt
+      ```
+      ./acrypt encrypt public.key plaintext.txt
+      ```
 
   5. Bob sends the encrypted password to Alice by email.
   6. Alice decrypts the encrypted password with her private key.
 
-        ./acrypt decrypt private.key encrypted.dat
+      ```
+      ./acrypt decrypt private.key encrypted.dat
+      ```
 
   7. Alice removes her private key.
 
-        rm private.key
+      ```
+      rm private.key
+      ```
 
   8. Alice now knows the password and can connect to her account.
 
