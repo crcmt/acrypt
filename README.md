@@ -38,3 +38,5 @@ It aims to solve the following scenario:
 
   * *acrypt* stands for 'Asymetric enCRYPTion'.
   * Technically, *acrypt* is a wrapper around openssl.
+  * Supported platforms: Unix-like (Linux, Mac, ..)
+  - Dependencies: Bash, Openssl
