@@ -10,7 +10,12 @@ It aims to solve the following scenario:
   1. Admin Bob created an account for User Alice.
   2. Bob wants to send the account's password to Alice by email.
 
-Steps:
+Basic Usage:
+
+  * Bob and Alice install *acrypt*
+
+        git clone https://github.com/crcmt/acrypt
+
   * Alice generates keys pair
 
         ./acrypt gen
@@ -27,14 +32,3 @@ Steps:
 
   * Alice now knows the password and can connect to her account.
   * Done !
-
-installation
-------------
-
-    git clone https://github.com/crcmt/acrypt
-
-Usage
------
-
-    cd acrypt
-    ./acrypt
