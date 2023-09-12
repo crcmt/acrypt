@@ -18,17 +18,17 @@ Basic Usage:
 
   * Alice generates keys pair
 
-        ./acrypt gen
+        ./acrypt generate
 
   * Alice sends her public key to Bob by email.
   * Bob encrypts the account's password with Alice's public key.
 
-        ./acrypt enc public.key plaintext.txt
+        ./acrypt encrypt public.key plaintext.txt
 
   * Bob sends the encrypted passwd to Alice by email.
   * Alice decrypts the encrypted passwd with her private key.
 
-        ./acrypt dec private.key encrypted.txt
+        ./acrypt decrypt private.key encrypted.txt
 
   * Alice removes her privkey.
 

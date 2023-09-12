@@ -8,9 +8,9 @@
 usage ()
 {
     echo "Usage:"
-    echo " $0 gen"
-    echo " $0 enc <pubkey_filename> <plaintext_filename>"
-    echo " $0 dec <privkey_filename> <encrypted_filename>"
+    echo " $0 generate"
+    echo " $0 encrypt <pubkey_filename> <plaintext_filename>"
+    echo " $0 decrypt <privkey_filename> <encrypted_filename>"
 }
 
 get_pass ()
@@ -110,14 +110,14 @@ fi
 
 # -- main
 
-if [[ $action = "gen" ]]; then
+if [[ $action = "generate" ]]; then
 
     if [[ $priv_encryption = "true" ]]; then
         gen_keys_1
     else
         gen_keys_2
     fi
-elif [[ $action = "enc" ]]; then
+elif [[ $action = "encrypt" ]]; then
 
     if [[ $# -ne 3 ]]; then
         usage
@@ -128,7 +128,7 @@ elif [[ $action = "enc" ]]; then
     plaintext_filename=$3
     #check_pub_key
     encrypt $pubkey_filename $plaintext_filename
-elif [[ $action = "dec" ]]; then
+elif [[ $action = "decrypt" ]]; then
 
     if [[ $# -ne 3 ]]; then
         usage
