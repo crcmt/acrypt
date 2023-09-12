@@ -35,4 +35,3 @@ It aims to solve the following scenario:
         rm private.key
 
   8. Alice now knows the password and can connect to her account.
-  9. Done !
