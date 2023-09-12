@@ -67,15 +67,17 @@ gen_keys_1 ()
     passwd_=$(get_pass)
     echo
 
+    private_key=private.key
+
     #prompt_overwrite $private_key
 
     # generate private key
-    openssl genrsa -aes256 -passout pass:$passwd_ -out private.key 8912
+    openssl genrsa -aes256 -passout pass:$passwd_ -out $private_key 8912
 
     #prompt_overwrite $public_key
 
     # extract the public key.
-    openssl rsa -in private.key -passin pass:$passwd_ -pubout -out public.key
+    openssl rsa -in $private_key -passin pass:$passwd_ -pubout -out public.key
 }
 
 # private key without password (unencrypted)
@@ -84,15 +86,17 @@ gen_keys_2 ()
     echo "Generate new keys pair"
     echo
 
+    private_key=private.key
+
     #prompt_overwrite $private_key
 
     # generate private key
-    openssl genrsa -out private.key 8912
+    openssl genrsa -out $private_key 8912
 
     #prompt_overwrite $public_key
 
     # extract the public key.
-    openssl rsa -in private.key -pubout -out public.key
+    openssl rsa -in $private_key -pubout -out public.key
 }
 
 encrypt ()
