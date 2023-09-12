@@ -10,6 +10,8 @@ It aims to solve the following scenario:
   1. Bob created an account for User Alice.
   2. Bob wants to send the account's password to Alice by email.
 
+Technically, *acrypt* is a wrapper around openssl.
+
 ### Basic usage
 
   1. Bob and Alice install *acrypt*
