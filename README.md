@@ -7,26 +7,26 @@
 using an asymmetric key encryption scheme.
 
 It aims to solve the following scenario:  
-  * Admin A created an account for User U.
-  * Now A wants to send the account's password to U by email.
+  1. Admin Bob created an account for User Alice.
+  2. Bob wants to send the account's password to Alice by email.
 
 Steps:
-  * A asks U to generate priv/pub keys pair with *acrypt*.
-  * A asks U to sent the pub key to him by email.
-  * A encrypts the passwd with the pub key with *acrypt*.
-  * A sends the encrypted passwd to U by email.
-  * U decrypts the encrypted passwd with *acrypt*.
-  * U now know the password and can connect to his account.
-  * U removes his priv/pub keys pair (one-time keys pair).
+  * Alice generates keys pair with *acrypt*.
+
+        ./acrypt gen
+
+  * Alice sends the pub key to Bob by email.
+  * Bob encrypts the account's password with the pub key with *acrypt*.
+
+        ./acrypt enc
+
+  * Bob sends the encrypted passwd to Alice by email.
+  * Alice decrypts the encrypted passwd with *acrypt*.
+
+        ./acrypt dec
+
+  * Alice now knows the password and can connect to her account.
   * Done !
-
-Current implementation is based on openssl.
-
-dependencies
-------------
-
-bash
-openssl
 
 installation
 ------------
