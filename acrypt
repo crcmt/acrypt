@@ -17,6 +17,10 @@ prompt_overwrite ()
 {
     local filename_=$1
 
+    if [[ "$overwrite_without_confirm" = "true" ]]; then
+        return 0
+    fi
+
     if [[ -e "$filename_" ]]; then
         read -p "$filename_ will be overwrited. Do you want to continue ? (y/n)" -n 1 -r
         echo # move to a new line (needed because of the '-n' option)
@@ -144,13 +148,15 @@ decrypt ()
 # -- init
 
 priv_encryption=false
-
+overwrite_without_confirm=false
 
 # -- parse args
 
 # parse the options:
-while getopts hp flag; do
+while getopts hpy flag; do
   case "$flag" in
+     y) overwrite_without_confirm=true # y stands for 'Yes'
+        ;;
      p) priv_encryption=true # p stands for 'Password'
         ;;
      h) usage
