@@ -59,7 +59,7 @@ check_plaintext_file ()
     fi
 }
 
-# private key is encrypted with password
+# private key with password (encrypted)
 gen_keys_1 ()
 {
     echo "Generate new keys pair"
@@ -78,7 +78,7 @@ gen_keys_1 ()
     openssl rsa -in private.key -passin pass:$passwd_ -pubout -out public.key
 }
 
-# private key is unencrypted without password
+# private key without password (unencrypted)
 gen_keys_2 ()
 {
     echo "Generate new keys pair"
