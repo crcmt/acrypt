@@ -30,7 +30,7 @@ Basic Usage:
 
         ./acrypt decrypt private.key encrypted.txt
 
-  * Alice removes her privkey.
+  * Alice removes her private key.
 
         rm private.key
 
