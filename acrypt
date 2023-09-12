@@ -13,6 +13,22 @@ usage ()
     echo " $0 decrypt <privkey_filename> <encrypted_filename>"
 }
 
+prompt_overwrite ()
+{
+    local filename_=$1
+
+    if [[ -e "$filename_" ]]; then
+        read -p "$filename_ will be overwrited. Do you want to continue ? (y/n)" -n 1 -r
+        echo # move to a new line (needed because of the '-n' option)
+        if [ "$REPLY" = "y" ]; then
+            :
+        else
+            echo "Abort."
+            exit 0
+        fi
+    fi
+}
+
 get_pass ()
 {
     read -s -p "Password: " password
