@@ -12,9 +12,9 @@ usage ()
     echo " $0 encrypt <pubkey_filename> <plaintext_filename>"
     echo " $0 decrypt <privkey_filename> <encrypted_filename>"
     echo "Options:"
-    echo " -h  help"
-    echo " -p  protect private key with a password"
-    echo " -y  overwrite files without confirmation"
+    echo " -h    help"
+    echo " -p    protect private key with password"
+    echo " -y    overwrite files without confirmation"
 }
 
 prompt_overwrite ()
