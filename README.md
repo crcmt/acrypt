@@ -11,17 +11,17 @@ It aims to solve the following scenario:
   2. Bob wants to send the account's password to Alice by email.
 
 Steps:
-  * Alice generates keys pair with *acrypt*.
+  * Alice generates keys pair
 
         ./acrypt gen
 
-  * Alice sends the pub key to Bob by email.
-  * Bob encrypts the account's password with the pub key with *acrypt*.
+  * Alice sends pubkey to Bob by email.
+  * Bob encrypts the account's password with Alice's pubkey
 
         ./acrypt enc
 
   * Bob sends the encrypted passwd to Alice by email.
-  * Alice decrypts the encrypted passwd with *acrypt*.
+  * Alice decrypts the encrypted passwd
 
         ./acrypt dec
 

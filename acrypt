@@ -78,15 +78,15 @@ decrypt ()
 
 # -- init
 
-priv_encryption=true
+priv_encryption=false
 
 
 # -- parse args
 
 # parse the options:
-while getopts nh flag; do
+while getopts hp flag; do
   case "$flag" in
-     n) priv_encryption=false # n stands for 'No priv key encryption'
+     p) priv_encryption=true # p stands for 'Password'
         ;;
      h) usage
         exit 0
