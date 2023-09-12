@@ -10,29 +10,29 @@ It aims to solve the following scenario:
   1. Admin Bob created an account for User Alice.
   2. Bob wants to send the account's password to Alice by email.
 
-Basic Usage:
+Basic usage:
 
-  * Bob and Alice install *acrypt*
+  1. Bob and Alice install *acrypt*
 
         git clone https://github.com/crcmt/acrypt
 
-  * Alice generates keys pair
+  2. Alice generates keys pair
 
         ./acrypt generate
 
-  * Alice sends her public key to Bob by email.
-  * Bob encrypts the account's password with Alice's public key.
+  3. Alice sends her public key to Bob by email.
+  4. Bob encrypts the account's password with Alice's public key.
 
         ./acrypt encrypt public.key plaintext.txt
 
-  * Bob sends the encrypted passwd to Alice by email.
-  * Alice decrypts the encrypted passwd with her private key.
+  5. Bob sends the encrypted passwd to Alice by email.
+  6. Alice decrypts the encrypted passwd with her private key.
 
         ./acrypt decrypt private.key encrypted.dat
 
-  * Alice removes her private key.
+  7. Alice removes her private key.
 
         rm private.key
 
-  * Alice now knows the password and can connect to her account.
-  * Done !
+  8. Alice now knows the password and can connect to her account.
+  9. Done !
