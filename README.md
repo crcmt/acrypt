@@ -28,7 +28,7 @@ Basic Usage:
   * Bob sends the encrypted passwd to Alice by email.
   * Alice decrypts the encrypted passwd with her private key.
 
-        ./acrypt decrypt private.key encrypted.txt
+        ./acrypt decrypt private.key encrypted.dat
 
   * Alice removes her private key.
 
