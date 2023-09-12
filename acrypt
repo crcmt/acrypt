@@ -21,17 +21,21 @@ get_pass ()
 
 check_priv_key ()
 {
-    if [[ ! -e "private.key" ]]; then
+    local privkey_filename=$1
+
+    if [[ ! -e "$privkey_filename" ]]; then
         echo 'Missing "private.key" file'
-        exit 0
+        exit 1
     fi
 }
 
 check_pub_key ()
 {
-    if [[ ! -e "public.key" ]]; then
+    local pubkey_filename=$1
+
+    if [[ ! -e "$pubkey_filename" ]]; then
         echo 'Missing "public.key" file'
-        exit 0
+        exit 1
     fi
 }
 
@@ -126,7 +130,7 @@ elif [[ $action = "encrypt" ]]; then
 
     pubkey_filename=$2
     plaintext_filename=$3
-    #check_pub_key
+    check_pub_key $pubkey_filename
     encrypt $pubkey_filename $plaintext_filename
     echo "Encrypted file successfully created ('encrypted.txt')"
 elif [[ $action = "decrypt" ]]; then
@@ -138,7 +142,7 @@ elif [[ $action = "decrypt" ]]; then
 
     privkey_filename=$2
     encrypted_filename=$3
-    #check_priv_key
+    check_priv_key $privkey_filename
     decrypt $privkey_filename $encrypted_filename
     echo "Plaintext file successfully created ('plaintext.txt')"
 else
