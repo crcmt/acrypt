@@ -67,8 +67,12 @@ gen_keys_1 ()
     passwd_=$(get_pass)
     echo
 
+    #prompt_overwrite $private_key
+
     # generate private key
     openssl genrsa -aes256 -passout pass:$passwd_ -out private.key 8912
+
+    #prompt_overwrite $public_key
 
     # extract the public key.
     openssl rsa -in private.key -passin pass:$passwd_ -pubout -out public.key
@@ -80,8 +84,12 @@ gen_keys_2 ()
     echo "Generate new keys pair"
     echo
 
+    #prompt_overwrite $private_key
+
     # generate private key
     openssl genrsa -out private.key 8912
+
+    #prompt_overwrite $public_key
 
     # extract the public key.
     openssl rsa -in private.key -pubout -out public.key
@@ -91,6 +99,9 @@ encrypt ()
 {
     public_key=$1
     plaintext_filename=$2
+
+    #prompt_overwrite $encrypted_filename
+
     openssl rsautl -encrypt -pubin -inkey $public_key -in $plaintext_filename -out encrypted.dat
 }
 
@@ -98,6 +109,9 @@ decrypt ()
 {
     privkey_filename=$1
     encrypted_filename=$2
+
+    #prompt_overwrite $plaintext_filename
+
     openssl rsautl -decrypt -inkey $privkey_filename -in $encrypted_filename -out plaintext.txt
 }
 
