@@ -12,7 +12,7 @@ It aims to solve the following scenario:
 
   1. Bob and Alice install *acrypt*
 
-        git clone https://github.com/crcmt/acrypt
+      git clone https://github.com/crcmt/acrypt
 
   2. Alice generates keys pair
 
