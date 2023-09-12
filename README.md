@@ -32,5 +32,7 @@ Basic Usage:
 
   * Alice removes her privkey.
 
+        rm private.key
+
   * Alice now knows the password and can connect to her account.
   * Done !
