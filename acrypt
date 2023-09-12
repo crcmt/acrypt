@@ -9,7 +9,7 @@ usage ()
 {
     echo "Usage:"
     echo " $0 gen"
-    echo " $0 enc <plaintext_filename>"
+    echo " $0 enc <pubkey_filename> <plaintext_filename>"
     echo " $0 dec <encrypted_filename>"
 }
 
@@ -65,8 +65,9 @@ gen_keys_2 ()
 
 encrypt ()
 {
-    plaintext_filename=$1
-    openssl rsautl -encrypt -pubin -inkey public.key -in $plaintext_filename -out encrypted.txt
+    public_key=$1
+    plaintext_filename=$2
+    openssl rsautl -encrypt -pubin -inkey $public_key -in $plaintext_filename -out encrypted.txt
 }
 
 decrypt ()
@@ -118,14 +119,15 @@ if [[ $action = "gen" ]]; then
     fi
 elif [[ $action = "enc" ]]; then
 
-    if [[ $# -ne 2 ]]; then
+    if [[ $# -ne 3 ]]; then
         usage
         exit 1
     fi
 
-    plaintext_filename=$2
-    check_pub_key
-    encrypt $plaintext_filename
+    pubkey_filename=$2
+    plaintext_filename=$3
+    #check_pub_key
+    encrypt $pubkey_filename $plaintext_filename
 elif [[ $action = "dec" ]]; then
 
     if [[ $# -ne 2 ]]; then
