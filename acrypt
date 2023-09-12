@@ -39,6 +39,26 @@ check_pub_key ()
     fi
 }
 
+check_encrypted_file ()
+{
+    local encrypted_file=$1
+
+    if [[ ! -e "$encrypted_file" ]]; then
+        echo "Encrypted file not found ($encrypted_file)"
+        exit 1
+    fi
+}
+
+check_plaintext_file ()
+{
+    local plaintext_file=$1
+
+    if [[ ! -e "$plaintext_file" ]]; then
+        echo "Plaintext file not found ($plaintext_file)"
+        exit 1
+    fi
+}
+
 # private key is encrypted with password
 gen_keys_1 ()
 {
@@ -131,6 +151,7 @@ elif [[ $action = "encrypt" ]]; then
     pubkey_filename=$2
     plaintext_filename=$3
     check_pub_key $pubkey_filename
+    check_plaintext_file $plaintext_filename
     encrypt $pubkey_filename $plaintext_filename
     echo "Encrypted file successfully created (encrypted.txt)"
 elif [[ $action = "decrypt" ]]; then
@@ -143,6 +164,7 @@ elif [[ $action = "decrypt" ]]; then
     privkey_filename=$2
     encrypted_filename=$3
     check_priv_key $privkey_filename
+    check_encrypted_file $encrypted_filename
     decrypt $privkey_filename $encrypted_filename
     echo "Plaintext file successfully created (plaintext.txt)"
 else
