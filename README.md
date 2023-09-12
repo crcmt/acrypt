@@ -7,7 +7,7 @@
 using asymmetric key encryption scheme.
 
 It aims to solve the following scenario:  
-  1. Admin Bob created an account for User Alice.
+  1. Bob created an account for User Alice.
   2. Bob wants to send the account's password to Alice by email.
 
 ### Basic usage
