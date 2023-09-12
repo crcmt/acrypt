@@ -100,9 +100,11 @@ encrypt ()
     public_key=$1
     plaintext_filename=$2
 
+    encrypted_filename=encrypted.dat
+
     #prompt_overwrite $encrypted_filename
 
-    openssl rsautl -encrypt -pubin -inkey $public_key -in $plaintext_filename -out encrypted.dat
+    openssl rsautl -encrypt -pubin -inkey $public_key -in $plaintext_filename -out $encrypted_filename
 }
 
 decrypt ()
@@ -110,9 +112,11 @@ decrypt ()
     privkey_filename=$1
     encrypted_filename=$2
 
+    plaintext_filename=plaintext.txt
+
     #prompt_overwrite $plaintext_filename
 
-    openssl rsautl -decrypt -inkey $privkey_filename -in $encrypted_filename -out plaintext.txt
+    openssl rsautl -decrypt -inkey $privkey_filename -in $encrypted_filename -out $plaintext_filename
 }
 
 # -- init
