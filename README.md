@@ -3,7 +3,7 @@
 
 *acrypt* stands for 'Asymetric enCRYPTion'.
 
-*acrypt* is a tool to encrypt a password
+*acrypt* is a tool to encrypt password
 using asymmetric key encryption scheme.
 
 It aims to solve the following scenario:  
