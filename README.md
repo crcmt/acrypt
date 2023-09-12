@@ -1,16 +1,12 @@
 *acrypt*
 ========
 
-*acrypt* stands for 'Asymetric enCRYPTion'.
-
 *acrypt* is a tool to encrypt password
 using asymmetric key encryption scheme.
 
 It aims to solve the following scenario:  
   1. Bob created an account for User Alice.
   2. Bob wants to send the account's password to Alice by email.
-
-Technically, *acrypt* is a wrapper around openssl.
 
 ### Basic usage
 
@@ -37,3 +33,8 @@ Technically, *acrypt* is a wrapper around openssl.
         rm private.key
 
   8. Alice now knows the password and can connect to her account.
+
+### Basic usage
+
+  * *acrypt* stands for 'Asymetric enCRYPTion'.
+  * Technically, *acrypt* is a wrapper around openssl.
