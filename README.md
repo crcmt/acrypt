@@ -20,15 +20,15 @@ Basic Usage:
 
         ./acrypt gen
 
-  * Alice sends pubkey to Bob by email.
-  * Bob encrypts the account's password with Alice's pubkey
+  * Alice sends her public key to Bob by email.
+  * Bob encrypts the account's password with Alice's public key.
 
         ./acrypt enc public.key plaintext.txt
 
   * Bob sends the encrypted passwd to Alice by email.
-  * Alice decrypts the encrypted passwd
+  * Alice decrypts the encrypted passwd with her private key.
 
-        ./acrypt dec encrypted.txt
+        ./acrypt dec private.key encrypted.txt
 
   * Alice removes her privkey.
 

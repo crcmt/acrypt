@@ -10,7 +10,7 @@ usage ()
     echo "Usage:"
     echo " $0 gen"
     echo " $0 enc <pubkey_filename> <plaintext_filename>"
-    echo " $0 dec <encrypted_filename>"
+    echo " $0 dec <privkey_filename> <encrypted_filename>"
 }
 
 get_pass ()
@@ -72,10 +72,10 @@ encrypt ()
 
 decrypt ()
 {
-    encrypted_filename=$1
-    openssl rsautl -decrypt -inkey private.key -in $encrypted_filename -out plaintext.txt
+    privkey_filename=$1
+    encrypted_filename=$2
+    openssl rsautl -decrypt -inkey $privkey_filename -in $encrypted_filename -out plaintext.txt
 }
-
 
 # -- init
 
@@ -130,14 +130,15 @@ elif [[ $action = "enc" ]]; then
     encrypt $pubkey_filename $plaintext_filename
 elif [[ $action = "dec" ]]; then
 
-    if [[ $# -ne 2 ]]; then
+    if [[ $# -ne 3 ]]; then
         usage
         exit 1
     fi
 
-    encrypted_filename=$2
-    check_priv_key
-    decrypt $encrypted_filename
+    privkey_filename=$2
+    encrypted_filename=$3
+    #check_priv_key
+    decrypt $privkey_filename $encrypted_filename
 else
     usage
     exit 1
