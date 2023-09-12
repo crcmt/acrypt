@@ -23,12 +23,14 @@ Basic Usage:
   * Alice sends pubkey to Bob by email.
   * Bob encrypts the account's password with Alice's pubkey
 
-        ./acrypt enc
+        ./acrypt enc plaintext.txt
 
   * Bob sends the encrypted passwd to Alice by email.
   * Alice decrypts the encrypted passwd
 
-        ./acrypt dec
+        ./acrypt dec encrypted.txt
+
+  * Alice removes her privkey.
 
   * Alice now knows the password and can connect to her account.
   * Done !
